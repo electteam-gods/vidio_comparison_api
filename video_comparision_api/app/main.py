@@ -1,12 +1,9 @@
 import requests
-from fastapi import FastAPI, HTTPException, File, UploadFile
-from fastapi.responses import JSONResponse
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
-import torch
 import cv2
 from transformers import AutoImageProcessor, TimesformerForVideoClassification
-import torch.nn.functional as F
 
 model_name = "facebook/timesformer-base-finetuned-k400"
 processor = AutoImageProcessor.from_pretrained(model_name)
@@ -55,5 +52,4 @@ async def process_video(video: VideoFile):
         raise HTTPException(status_code=500, detail=str(e))
 
     emb = make_embedding(frames, model, processor)
-    # Отправка вектора на обработку к самому себе
-    response = requests.post("http://127.0.0.1:8000/process_vector/", json={"vector": emb})
+    return {"vector": emb}
