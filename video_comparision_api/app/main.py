@@ -9,7 +9,7 @@ import torch.nn.functional as F
 import cv2
 from transformers import AutoImageProcessor, TimesformerForVideoClassification
 
-db = lancedb.connect("http://lancedb")
+db = lancedb.connect("database")
 model_name = "facebook/timesformer-base-finetuned-k400"
 processor = AutoImageProcessor.from_pretrained(model_name)
 model = TimesformerForVideoClassification.from_pretrained(model_name)
