@@ -1,4 +1,3 @@
-import urllib
 import lancedb
 import requests
 from fastapi import FastAPI, HTTPException
@@ -9,10 +8,12 @@ import torch.nn.functional as F
 import cv2
 from transformers import AutoImageProcessor, TimesformerForVideoClassification
 
+device = "cuda" if torch.cuda.is_available() else "cpu"
+print(device)
 db = lancedb.connect("database")
 model_name = "facebook/timesformer-base-finetuned-k400"
 processor = AutoImageProcessor.from_pretrained(model_name)
-model = TimesformerForVideoClassification.from_pretrained(model_name)
+model = TimesformerForVideoClassification.from_pretrained(model_name).to(device)
 
 app = FastAPI()
 
@@ -34,45 +35,54 @@ def load_video(video_path, frame_height=244, frame_width=244):
 
 
 # Функция для получения предсказаний
-def make_embedding(frames, model, processor):
-    inputs = processor(images=frames, return_tensors="pt")
+def make_embedding(file_path, model, processor):
+    frames = load_video(file_path)
+    inputs = processor(images=frames, return_tensors="pt").to(device)
     outputs = model(**inputs, output_hidden_states=True)
 
     return outputs.hidden_states[-1].squeeze(0).mean(dim=1)
 
-class VideoFile(BaseModel):
+class VideoRequest(BaseModel):
+    id: str
     url: str
 
-class Uuid(BaseModel):
-    id: str
-
 @app.post("/")
-async def process_video(uuid: Uuid, video: VideoFile):
+async def process_video(video_request: VideoRequest):
+    is_first = False
     if "emb_table" not in db.table_names():
-        tbl = db.create_table("emb_table", data=[])
+        is_first = True
     else:
         tbl = db.open_table("emb_table")
     # считывание видео
     result = {}
-    url = video.url
+    uuid = video_request.id
+    url = video_request.url
     try:
         response = requests.get(url)
         if response.status_code == 200:
             file_Path = 'short.mp4'
-            urllib.request.urlretrieve(response, file_Path)
+            with open(file_Path, 'wb') as file:
+                file.write(response.content)
             emb = make_embedding(file_Path, model, processor)
             numpy_emb = emb.cpu().detach().numpy()
-            res = tbl.search(numpy_emb).limit(1).metric("cosine").to_pandas()
-            vec = torch.tensor(list(res.vector)).squeeze(0)
-            cosine_similarity = F.cosine_similarity(emb, vec, dim=0).item()
-            if cosine_similarity < 0.48:
+            if is_first:
                 data = [{"vector": numpy_emb, "id": uuid}]
+                tbl = db.create_table("emb_table", data)
                 tbl.add(data)
                 result['answer'] = False
                 result['id'] = ""
             else:
-                result['answer'] = True
-                result['id'] = res.id
+                res = tbl.search(numpy_emb).limit(1).metric("cosine").to_pandas()
+                vec = torch.tensor(list(res.vector)).squeeze(0).to(device)
+                cosine_similarity = F.cosine_similarity(emb, vec, dim=0).item()
+                if cosine_similarity < 0.48:
+                    data = [{"vector": numpy_emb, "id": uuid}]
+                    tbl.add(data)
+                    result['answer'] = False
+                    result['id'] = ""
+                else:
+                    result['answer'] = True
+                    result['id'] = res.id
         else:
             HTTPException(status_code=404, detail="Failed to download image")
     except Exception as e:
