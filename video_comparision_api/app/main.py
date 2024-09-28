@@ -13,8 +13,7 @@ from transformers import AutoImageProcessor, TimesformerForVideoClassification
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 #получение доступ к бд
-LANCEDB_URL = os.getenv("LANCEDB_URL", "http://lancedb")
-db = lancedb.connect(LANCEDB_URL)
+db = lancedb.connect("/data")
 
 #определение модели Timesformer
 model_name = "facebook/timesformer-base-finetuned-k400"
