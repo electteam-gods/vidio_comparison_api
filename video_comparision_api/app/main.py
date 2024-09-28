@@ -1,3 +1,5 @@
+import os
+
 import lancedb
 import requests
 from fastapi import FastAPI, HTTPException
@@ -11,7 +13,8 @@ from transformers import AutoImageProcessor, TimesformerForVideoClassification
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 #получение доступ к бд
-db = lancedb.connect("http://lancedb")
+LANCEDB_URL = os.getenv("LANCEDB_URL", "http://lancedb")
+db = lancedb.connect(LANCEDB_URL)
 
 #определение модели Timesformer
 model_name = "facebook/timesformer-base-finetuned-k400"
