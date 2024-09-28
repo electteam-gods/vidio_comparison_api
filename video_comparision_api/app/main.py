@@ -10,7 +10,7 @@ from transformers import AutoImageProcessor, TimesformerForVideoClassification
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 print(device)
-db = lancedb.connect("database")
+db = lancedb.connect("http://lancedb")
 model_name = "facebook/timesformer-base-finetuned-k400"
 processor = AutoImageProcessor.from_pretrained(model_name)
 model = TimesformerForVideoClassification.from_pretrained(model_name).to(device)
