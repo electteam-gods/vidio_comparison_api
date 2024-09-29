@@ -27,7 +27,7 @@
 
 ## <a name="12"> Запуск </a>
 
-Модель была предварительно упакована в Docker-образ и доступна на Docker Hub: `docker.io/oleg36913/lcar_plate_app:v3`
+Модель была предварительно упакована в Docker-образ и доступна на Docker Hub: `docker.io/oleg36913/video_embed_api_img:v4`
 
 Решение оформленно в виде стека Docker контейнеров, все сервисы поднимаются при помощи Docker Compose файлов:
 1. `docker.compose.yml` - для прода
@@ -39,7 +39,7 @@
 4. Ждём пару минут...
 5. `echo "Enjoy!"`
 
-P.S. В репозитории [https://github.com/electteam-gods/scalable_api_for_yappi_ai.git](https://github.com/electteam-gods/scalable_api_for_yappi_ai.git) организована очередь и Facade API для модели. Контейнер с моделью `docker.io/oleg36913/lcar_plate_app:v3` живёт независимо, от репозитория [https://github.com/electteam-gods/scalable_api_for_yappi_ai.git](https://github.com/electteam-gods/scalable_api_for_yappi_ai.git), и без труда может быть вырван и интегрирован в другую систему.
+P.S. В репозитории [https://github.com/electteam-gods/scalable_api_for_yappi_ai.git](https://github.com/electteam-gods/scalable_api_for_yappi_ai.git) организована очередь и Facade API для модели. Контейнер с моделью `docker.io/oleg36913/video_embed_api_img:v4` живёт независимо, от репозитория [https://github.com/electteam-gods/scalable_api_for_yappi_ai.git](https://github.com/electteam-gods/scalable_api_for_yappi_ai.git), и без труда может быть вырван и интегрирован в другую систему.
 
 Проект скейлится горизонтально, количество worker-нод можно скейлить 
 
@@ -57,7 +57,7 @@ P.S. В репозитории [https://github.com/electteam-gods/scalable_api_f
 
 ## <a name="3">Практическая применимость </a>
 
-Практическая применимость решения заключается в простой интеграции нашего решения в большую задачу.
+Практическая применимость решения заключается в простой интеграции нашего решения в продовую систему.
 
 У нас обработка запроса происходит в 5 этапов:
 
@@ -71,6 +71,10 @@ P.S. В репозитории [https://github.com/electteam-gods/scalable_api_f
 
 <img width="1200" height="500" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/scheme%201.png"> 
 
+Также с помощью веб-сервиса для мониторинга Flower можно отслеживать статус Celery воркеров и задач
+
+<img width="1200" height="700" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/image_2024-09-29_09-20-16.png"> 
+
 ## <a name="4">Преимущества нашего решения </a>
 
 1 Учёт различных способов дупликации - наше решение способно отлавливать более 15 различных вариаций модификации контента.
@@ -81,7 +85,7 @@ P.S. В репозитории [https://github.com/electteam-gods/scalable_api_f
 
 4 Высокий процент попаданий при работе со сложными кейсами - использованные алгоритмы позволяют обрабатывать большую сложных сценариев.
 
-5 Высокая точность установления дубликатов - F1_SCORE >= 0.78
+5 Высокая точность установления дубликатов - F1_SCORE >= 0.79
 
 ## <a name="5">Планы развития </a>
 
@@ -108,7 +112,7 @@ P.S. В репозитории [https://github.com/electteam-gods/scalable_api_f
 
 - [ссылка на код модели с комментариями](https://github.com/electteam-gods/vidio_comparison_api/tree/main/video_comparision_api)&nbsp;
 - [ссылка на код реализации сервиса](https://github.com/electteam-gods/scalable_api_for_yappi_ai)&nbsp;
-- [ссылка на скринкаст](https://disk.yandex.ru/d/lcg9v136wceEGw)&nbsp;
+- [ссылка на скринкаст](https://disk.yandex.ru/d/n2f9UKn4MVxtEQ)&nbsp;
 
 
 
