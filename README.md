@@ -39,7 +39,7 @@
 4. Ждём пару минут...
 5. `echo "Enjoy!"`
 
-P.S. В репозитории https://github.com/electteam-gods/scalable_api_for_yappi_ai.git организована очередь и Facade API для модели. Контейнер с моделью (docker.io/oleg36913/lcar_plate_app:v3) живёт независимо, от репозитория scalable_api_for_yappi_ai, и без труда может быть вырван и интегрирован в другую систему.
+P.S. В репозитории [](https://github.com/electteam-gods/scalable_api_for_yappi_ai.git) организована очередь и Facade API для модели. Контейнер с моделью `docker.io/oleg36913/lcar_plate_app:v3` живёт независимо, от репозитория [](https://github.com/electteam-gods/scalable_api_for_yappi_ai.git), и без труда может быть вырван и интегрирован в другую систему.
 
 Проект без труда скейлится горизонтально, количество worker-нод можно скейлить 
 
