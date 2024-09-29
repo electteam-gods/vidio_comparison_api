@@ -16,7 +16,7 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 db = lancedb.connect("/data")
 
 #определение модели Timesformer
-model_name = "facebook/timesformer-base-finetuned-k400"
+model_name = "facebook/timesformer-base-finetuned-k600"
 processor = AutoImageProcessor.from_pretrained(model_name)
 model = TimesformerForVideoClassification.from_pretrained(model_name).to(device)
 
@@ -88,6 +88,7 @@ async def process_video(video_request: VideoRequest):
                 result['id'] = ""
             else:
                 res = tbl.search(numpy_emb).limit(1).metric("cosine").to_pandas()
+                id_vec = res.id.values[0]
                 vec = torch.tensor(list(res.vector)).squeeze(0).to(device)
                 cosine_similarity = F.cosine_similarity(emb, vec, dim=0).item()
                 del emb
@@ -102,11 +103,11 @@ async def process_video(video_request: VideoRequest):
                         result['id'] = ""
                     else:
                         result['answer'] = True
-                        result['id'] = res.id
+                        result['id'] = id_vec
                 else:
                     # определение возврата ответа api серверу
                     result['answer'] = True
-                    result['id'] = res.id
+                    result['id'] = id_vec
         else:
             HTTPException(status_code=404, detail="Failed to download image")
     except Exception as e:
