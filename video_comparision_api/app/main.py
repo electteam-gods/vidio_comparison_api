@@ -87,6 +87,7 @@ async def process_video(video_request: VideoRequest):
                 result['answer'] = False
                 result['id'] = ""
             else:
+                #если изображение не первое, проверяет с результатами в базе
                 res = tbl.search(numpy_emb).limit(1).metric("cosine").to_pandas()
                 id_vec = res.id.values[0]
                 vec = torch.tensor(list(res.vector)).squeeze(0).to(device)
@@ -94,18 +95,21 @@ async def process_video(video_request: VideoRequest):
                 del emb
                 #определение плагиата
                 if cosine_similarity < 0.4:
+                    #считается эмбединг для отзеркаленного видео
                     mirror_emb = make_embedding(file_Path, model, processor, 1)
                     mirror_cosine_similarity = F.cosine_similarity(mirror_emb, vec, dim=0).item()
                     if mirror_cosine_similarity < 0.4:
+                        #если сходство и с отзеркаленным видео низкое, то видео оригинальное
                         data = [{"vector": numpy_emb, "id": uuid}]
                         tbl.add(data)
                         result['answer'] = False
                         result['id'] = ""
                     else:
+                        #если сходство с отзеркаленным видео высоко, то видео - плагиат
                         result['answer'] = True
                         result['id'] = id_vec
                 else:
-                    # определение возврата ответа api серверу
+                    # если сходство с изначальным видео достаточно высоко, то это видео - плагиат
                     result['answer'] = True
                     result['id'] = id_vec
         else:
