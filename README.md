@@ -109,12 +109,10 @@ S3 бакет был предоставлен сторонним облачны�
 
 ## <a name="7">Полезные ссылки </a>
 
-- [ссылка на веса модели детекции](https://github.com/electteam-gods/model/tree/main/weights)
-- [ссылка на код модели с комментариями](https://github.com/electteam-gods/model)
-- [ссылка на код формирования таблицы ответов на тестовый датасет](https://github.com/electteam-gods/model/blob/main/pipeline.ipynb)
+- [ссылка на код модели с комментариями](https://github.com/electteam-gods/vidio_comparison_api/tree/main/video_comparision_api)&nbsp;
+- [ссылка на код реализации сервиса](https://github.com/electteam-gods/scalable_api_for_yappi_ai)&nbsp;
 - [ссылка на скринкаст](https://disk.yandex.ru/d/lcg9v136wceEGw)&nbsp;
-- [ссылка на демо](http://plates.ellecteam.ayarayarovich.ru)&nbsp;
-- [ссылка на код обучения](https://github.com/electteam-gods/model/blob/main/train-notbook.ipynb)
+
 
 
 
