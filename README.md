@@ -33,7 +33,7 @@
 1. `docker.compose.yml` - для прода
 
 По шагам:
-1. `git clone https://github.com/electteam-gods/scalable_api_for_yappi_ai.git - клонируем репозиторий
+1. `git clone https://github.com/electteam-gods/scalable_api_for_yappi_ai.git` - клонируем репозиторий
 2. `cd scalable_api_for_yappi_ai` - переходим в папку с репозиторием
 3. `docker compose up -f docker.compose.yml up -d` - запускаем весь стек
 4. Ждём пару минут...
