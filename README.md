@@ -111,6 +111,7 @@ P.S. В репозитории [https://github.com/electteam-gods/scalable_api_f
 ## <a name="7">Полезные ссылки </a>
 
 - [ссылка на код модели с комментариями](https://github.com/electteam-gods/vidio_comparison_api/tree/main/video_comparision_api)&nbsp;
+- [ссылка на код формирования таблицы ответов на тестовый датасет](https://github.com/electteam-gods/vidio_comparison_api/blob/main/video_comparision_api/submition.ipynb)&nbsp;
 - [ссылка на код реализации сервиса](https://github.com/electteam-gods/scalable_api_for_yappi_ai)&nbsp;
 - [ссылка на скринкаст](https://disk.yandex.ru/d/n2f9UKn4MVxtEQ)&nbsp;
 
