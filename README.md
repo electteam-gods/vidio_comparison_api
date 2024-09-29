@@ -96,16 +96,14 @@ S3 бакет был предоставлен сторонним облачны�
 
 ## <a name="6">Стек </a>
 
-<img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original-wordmark.svg" title="Python" alt="Puthon" width="40" height="40"/>&nbsp;
-<img src="https://github.com/devicons/devicon/blob/6910f0503efdd315c8f9b858234310c06e04d9c0/icons/docker/docker-plain-wordmark.svg" title="Docker" alt="Puthon" width="40" height="40"/>&nbsp;
+<img src="https://github.com/devicons/devicon/blob/master/icons/python/python-original.svg" title="Python" alt="Puthon" width="40" height="40"/>&nbsp;
+<img src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-plain-wordmark.svg" title="Docker" alt="Puthon" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/pytorch/pytorch-original.svg" title="Pytorch" alt="Puthon" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/master/icons/numpy/numpy-original.svg" title="Numpy" alt="Puthon" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/devicons/devicon/blob/master/icons/fastapi/fastapi-original.svg" title="FastApi" alt="Puthon" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/opencv/opencv-original.svg" title="OpenCV" alt="Puthon" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/6910f0503efdd315c8f9b858234310c06e04d9c0/icons/vuejs/vuejs-original-wordmark.svg" title="Vue" alt="Puthon" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/6910f0503efdd315c8f9b858234310c06e04d9c0/icons/typescript/typescript-original.svg" title="TypeScript" alt="Puthon" width="40" height="40"/>&nbsp;
-  <img src="https://github.com/devicons/devicon/blob/6910f0503efdd315c8f9b858234310c06e04d9c0/icons/rabbitmq/rabbitmq-original-wordmark.svg" title="RabbitMQ" alt="Puthon" width="40" height="40"/>&nbsp;
+  <img src="https://github.com/celery/celery/blob/main/docs/images/celery_512.png" title="Celery" alt="Puthon" width="40" height="40"/>&nbsp;
+  <img src="https://huggingface.co/datasets/huggingface/documentation-images/raw/main/transformers-logo-light.svg" title="Transformers" alt="Puthon" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/6910f0503efdd315c8f9b858234310c06e04d9c0/icons/redis/redis-original-wordmark.svg" title="Redis" alt="Puthon" width="40" height="40"/>&nbsp;
-<img src="https://cdn.prod.website-files.com/646dd1f1a3703e451ba81ecc/6499468f33db295c5a1219ec_Ultralytics_mark_blue.svg" title="Ultralytics" alt="Puthon" width="40" height="40"/>&nbsp;
 
 ## <a name="7">Полезные ссылки </a>
 
