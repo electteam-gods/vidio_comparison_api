@@ -4,8 +4,7 @@
 # <p align="center"> ЭТО РЕПОЗИТОРИЙ СО ВСЕМИ ДЕТАЛЯМИ РЕАЛИЗАЦИИ НЕЙРОННОЙ МОДЕЛИ </p>
 
 <p align="center">
-<img width="400" height="400" alt="photo" src="![image](https://github.com/user-attachments/assets/73bbabd3-0021-45fb-a4a3-b566b84307c0)
-">
+<img width="400" height="400" alt="photo" src="https://github.com/user-attachments/assets/73bbabd3-0021-45fb-a4a3-b566b84307c0">
 </p> 
 
 ## Оглавление
