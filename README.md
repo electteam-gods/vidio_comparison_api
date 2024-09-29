@@ -29,20 +29,19 @@
 
 Модель была предварительно упакована в Docker-образ и доступна на Docker Hub: `docker.io/oleg36913/lcar_plate_app:v3`
 
-Решение оформленно в виде монорепы, все сервисы поднимаются при помощи Docker Compose файлов:
-1. `docker.compose.dev.prd.yml` - для прода
-1. `docker.compose.dev.yml` - для разработки
+Решение оформленно в виде стека Docker контейнеров, все сервисы поднимаются при помощи Docker Compose файлов:
+1. `docker.compose.yml` - для прода
 
 По шагам:
-1. `git clone ...` - клонируем репозиторий
-2. `cd ...` - переходим в папку с репозиторием
-3. `docker compose up -f docker.compose.dev.prd.yml up -d` - запускаем весь стек
+1. `git clone https://github.com/electteam-gods/scalable_api_for_yappi_ai.git - клонируем репозиторий
+2. `cd scalable_api_for_yappi_ai` - переходим в папку с репозиторием
+3. `docker compose up -f docker.compose.yml up -d` - запускаем весь стек
 4. Ждём пару минут...
 5. `echo "Enjoy!"`
 
-S3 бакет был предоставлен сторонним облачным провайдером в целях экономии времени, но ничего не мешает поставить MinIO и организовать локальное S3 хранилище.
+P.S. В репозитории https://github.com/electteam-gods/scalable_api_for_yappi_ai.git организована очередь и Facade API для модели. Контейнер с моделью (docker.io/oleg36913/lcar_plate_app:v3) живёт независимо, от репозитория scalable_api_for_yappi_ai, и без труда может быть вырван и интегрирован в другую систему.
 
-Проект без труда скейлится горизонтально, воркер ноды никакого внутреннего состояния не имеют.
+Проект без труда скейлится горизонтально, количество worker-нод можно скейлить 
 
 ## <a name="2">Решение </a>
 
