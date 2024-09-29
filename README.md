@@ -4,7 +4,7 @@
 # <p align="center"> ЭТО РЕПОЗИТОРИЙ СО ВСЕМИ ДЕТАЛЯМИ РЕАЛИЗАЦИИ НЕЙРОННОЙ МОДЕЛИ </p>
 
 <p align="center">
-<img width="400" height="400" alt="photo" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/Group%201000010920.png">
+<img width="800" height="400" alt="photo" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/Group%201000010920.png">
 </p> 
 
 ## Оглавление
