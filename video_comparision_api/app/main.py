@@ -33,7 +33,7 @@ def load_video(video_path, f=0, frame_height=480, frame_width=480):
         frame = cv2.resize(frame, (frame_width, frame_height))
         frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB)
-        frame = frame[80:400, 50:430]
+        frame = frame[110:350, 50:430]
         frames.append(frame)
         ret, frame = cap.read()
     cap.release()
