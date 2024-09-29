@@ -102,7 +102,7 @@ S3 бакет был предоставлен сторонним облачны�
   <img src="https://github.com/devicons/devicon/blob/master/icons/fastapi/fastapi-original.svg" title="FastApi" alt="Puthon" width="40" height="40"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/master/icons/opencv/opencv-original.svg" title="OpenCV" alt="Puthon" width="40" height="40"/>&nbsp;
   <img src="https://github.com/celery/celery/blob/main/docs/images/celery_512.png" title="Celery" alt="Puthon" width="40" height="40"/>&nbsp;
-  <img src="https://huggingface.co/datasets/huggingface/documentation-images/raw/main/transformers-logo-light.svg" title="Transformers" alt="Puthon" width="40" height="40"/>&nbsp;
+  <img src="https://huggingface.co/datasets/huggingface/documentation-images/raw/main/transformers-logo-light.svg" title="Transformers" alt="Puthon" width="80" height="80"/>&nbsp;
   <img src="https://github.com/devicons/devicon/blob/6910f0503efdd315c8f9b858234310c06e04d9c0/icons/redis/redis-original-wordmark.svg" title="Redis" alt="Puthon" width="40" height="40"/>&nbsp;
 
 ## <a name="7">Полезные ссылки </a>
