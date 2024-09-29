@@ -54,7 +54,7 @@ S3 бакет был предоставлен сторонним облачны�
    
 ### Архетиктура решения
 
-<img width="1200" height="300" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/Group%201000010919.png"> 
+<img width="1200" height="500" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/Group%201000010919.png"> 
 
 ## <a name="3">Практическая применимость </a>
 
@@ -70,7 +70,7 @@ S3 бакет был предоставлен сторонним облачны�
 
 ### Архетиктура системы
 
-<img width="1200" height="300" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/scheme%201.png"> 
+<img width="1200" height="500" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/scheme%201.png"> 
 
 ## <a name="4">Преимущества нашего решения </a>
 
