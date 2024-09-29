@@ -55,10 +55,6 @@ P.S. В репозитории [https://github.com/electteam-gods/scalable_api_f
 
 <img width="1200" height="500" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/Group%201000010919.png"> 
 
-Также с помощью веб-сервиса для мониторинга Flower можно отслеживать статус Celery воркеров и задач
-
-<img width="1200" height="700" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/image_2024-09-29_09-20-16.png"> 
-
 ## <a name="3">Практическая применимость </a>
 
 Практическая применимость решения заключается в простой интеграции нашего решения в продовую систему.
@@ -74,6 +70,10 @@ P.S. В репозитории [https://github.com/electteam-gods/scalable_api_f
 ### Архетиктура системы
 
 <img width="1200" height="500" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/scheme%201.png"> 
+
+Также с помощью веб-сервиса для мониторинга Flower можно отслеживать статус Celery воркеров и задач
+
+<img width="1200" height="700" alt="image" src="https://github.com/NikitaGordievskiy/scalable_api_for_yappi_ai/blob/main/image_2024-09-29_09-20-16.png"> 
 
 ## <a name="4">Преимущества нашего решения </a>
 
