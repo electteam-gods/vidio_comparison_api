@@ -24,29 +24,33 @@ model = TimesformerForVideoClassification.from_pretrained(model_name).to(device)
 app = FastAPI()
 
 #функция для загрузки видео
-def load_video(video_path, frame_height=244, frame_width=244):
+def load_video(video_path, f=0, frame_height=480, frame_width=480):
     cap = cv2.VideoCapture(video_path)
     frames = []
-    k = 0
     ret, frame = cap.read()
     #идем по кадрам видео
     while ret:
-        k += 1
         frame = cv2.resize(frame, (frame_width, frame_height))
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+        frame = cv2.cvtColor(frame, cv2.COLOR_GRAY2RGB)
+        frame = frame[50:430, 50:430]
         frames.append(frame)
         ret, frame = cap.read()
     cap.release()
     idxs = np.linspace(0, len(frames) - 1, 16, dtype=int) #выбираем 16 кадров из всего видео
-    return list(np.array(frames)[idxs])
+    frames = list(np.array(frames)[idxs])
+    if f:
+        frames = [cv2.flip(frame, 1) for frame in frames]
+    return frames
 
 
 # Функция для получения эмбедингов
-def make_embedding(file_path, model, processor):
-    frames = load_video(file_path)
+def make_embedding(file_path, model, processor, f=0):
+    frames = load_video(file_path, f)
     inputs = processor(images=frames, return_tensors="pt").to(device)
+    del frames
     outputs = model(**inputs, output_hidden_states=True)
-
+    del inputs
     return outputs.hidden_states[-1].squeeze(0).mean(dim=1)
 
 class VideoRequest(BaseModel):
@@ -86,13 +90,19 @@ async def process_video(video_request: VideoRequest):
                 res = tbl.search(numpy_emb).limit(1).metric("cosine").to_pandas()
                 vec = torch.tensor(list(res.vector)).squeeze(0).to(device)
                 cosine_similarity = F.cosine_similarity(emb, vec, dim=0).item()
+                del emb
                 #определение плагиата
-                if cosine_similarity < 0.48:
-                    # добавление результата в базу и определение возврата ответа api серверу
-                    data = [{"vector": numpy_emb, "id": uuid}]
-                    tbl.add(data)
-                    result['answer'] = False
-                    result['id'] = ""
+                if cosine_similarity < 0.4:
+                    mirror_emb = make_embedding(file_Path, model, processor, 1)
+                    mirror_cosine_similarity = F.cosine_similarity(mirror_emb, vec, dim=0).item()
+                    if mirror_cosine_similarity < 0.4:
+                        data = [{"vector": numpy_emb, "id": uuid}]
+                        tbl.add(data)
+                        result['answer'] = False
+                        result['id'] = ""
+                    else:
+                        result['answer'] = True
+                        result['id'] = res.id
                 else:
                     # определение возврата ответа api серверу
                     result['answer'] = True
